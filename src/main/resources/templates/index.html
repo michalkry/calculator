@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div>
+    <form th:action="@{/calculate}" th:object="${newOperation}" method="post">
+        <input th:field="*{firstNumber}">
+        <input th:field="*{secondNumber}">
+        <select th:field="*{operationType}" class="form-control" id="category">
+            <option th:each="operationType : ${T(com.michalkry.calculator.OperationType).values()}"
+                    th:value="${operationType}"
+                    th:text="${operationType}">
+            </option>
+        </select>
+        <p th:text="${calculationResult}"></p>
+        <button type="submit">Calculate</button>
+    </form>
+</div>
+</body>
+</html>
